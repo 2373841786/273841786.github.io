@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	for(var i=0;i<4;i++){
+		var inp=document.createElement("input");
+		inp.type="submit";
+		inp.value="界面"+(i+1);
+		inp.style.marginLeft="10px";
+		document.body.appendChild(inp);
+	}
+	var di=document.createElement("div");
+	document.body.appendChild(di);
+	di.style.height="120px";
+	di.style.border="1px solid black";
+	for(var j=0;j<5;j++){
+		var img_=document.createElement("img");
+		img_.setAttribute("src","music_img/style0"+(j+1)+".jpg");
+		img_.style.width="120px";
+		img_.style.height="120px";
+		di.appendChild(img_);
+	}
+	var inpu=document.getElementsByTagName('input');
+	var im_=document.getElementsByTagName('img');
+	for(let k=0;k<inpu.length;k++){
+		inpu[k].onclick=function(){
+			console.log(k);
+			//k=0 1-5 k=1 6-10 k=2 11-15 k=3 16-20
+			for(let z=0;z<im_.length;z++){
+					if(k*5+1+z<10){
+						im_[z].src="music_img/style0"+(k*5+1+z)+".jpg"
+					}
+					else{
+						im_[z].src="music_img/style"+(k*5+1+z)+".jpg"
+					}
+				}
+		}
+	}
+	
+</script>
+</html>

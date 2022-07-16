@@ -1,0 +1,53 @@
+1.页面滑动(JS)
+let tag=document.getElementsByClassName("tag");
+let target=document.getElementsByClassName("target");
+
+for(let i=0;i<tag.length;i++){
+	tag[i].onclick=function(){
+		autoTime(i);
+	}
+}
+let timer;
+function autoTime(i){
+	timer=setInterval(function(){
+		let w_Y=window.scrollY;
+		let v=8;
+		window.scrollTo(0,w_Y+v);
+		autoPlay();
+		let w_Y1=window.scrollY;
+		if(w_Y>=target[i].offsetTop || w_Y==w_Y1){
+			window.clearInterval(timer);
+		}
+	},1);
+}
+let myAuto=document.getElementById("myaudio");
+function autoPlay(){
+	myAuto.src="music_img/带你去旅行.mp3";
+	myAuto.play();
+}
+function pausePlay(){
+	myAuto.pause();
+}
+let span_speed=3;
+let span_timer;
+function span_Jump(){
+	span_timer=setInterval(function(){
+		tag[0].style.top=parseInt(tag[0].style.top)-span_speed+"px";
+		span_speed-=0.2;
+		if(parseInt(tag[0].style.top)>=0){
+			clearInterval(span_timer);
+			span_speed=3;
+		}
+	},10);
+}
+tag[0].onmouseover=function(){
+	clearInterval(span_timer);
+	span_Jump();
+}
+
+2.文字跳动
+3.时间
+4.轮播图
+5.图片
+6.文字滚动
+7.场景切换
